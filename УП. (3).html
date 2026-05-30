@@ -1,0 +1,641 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Краснодар — Южная столица России</title>
+<style>
+html{
+    scroll-behavior:smooth;
+}
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+body {
+    font-family: ISO CB, sans-serif;
+    background:#f4f4f4;
+    color:#222; 
+    padding-left: 20px;
+    padding-right: 20px;
+}
+body.dark {
+    background: #222;
+    color: #eee;
+}
+body.dark nav {
+    background: #23263a;          
+}
+body.dark nav a {
+    color: #ffc48c;            
+}
+body.dark #theme-toggle {
+    color: #ffc48c;
+}
+body.dark header {
+    color: #ffe082;             
+}
+body.dark .section-title h2 {
+    color: #ffaa6c;               
+}
+body.dark .section-title p {
+    color: #bbbbbb;
+}
+body.dark .card,
+body.dark .history,
+body.dark .administration,
+body.dark .symbolism {
+    background: #29293b;
+    color: #eee;
+}
+body.dark .card-content h3, 
+body.dark .fact h3 {
+    color: #ffc48c;
+}
+body.dark .fact {
+    background: #313143;
+    color: #ffe082;
+}
+body.dark .gallery img {
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+    border: 2px solid #38385c;
+}
+body.dark footer {
+    background: #2c2532;         
+    color: white;
+}
+body.dark footer h2 {
+    color: #ffaa6c;
+}
+#theme-toggle {
+  font-size: 22px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #fffff; 
+  margin-left: 30px;
+  transition: color 0.3s, background 0.3s;
+}
+header {
+    height:65vh;
+    background:
+    linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+    url("https://sindbad.ru/wp-content/uploads/2024/08/park-galickogo.jpg");
+    background-size:cover;
+    background-position:center;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    color:white;
+    padding:20px;
+}
+header h1{
+    font-size:48px;
+    margin-bottom:20px;
+}
+header p{
+    font-size:18px;
+}
+nav{
+    position:sticky;
+    top:0;
+    background:#977d7d;
+    padding:18px;
+    z-index:1000;
+    box-shadow:0 2px 10px rgba(0,0,0,0.2);
+}
+nav ul{
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+  margin-right: auto; 
+}
+nav li{
+    margin:10px 20px;
+}
+nav a{
+    color:white;
+    text-decoration:none;
+    font-size:18px;
+    font-weight:bold;
+    transition:0.3s;
+}
+nav a:hover{
+    color:pink;
+}
+.section{
+    padding:80px 10%;
+}
+.section-title{
+    text-align:center;
+    margin-top: 40px;
+    margin-bottom:50px;
+}
+.section-title h2{
+    font-size:45px;
+    color:#e14a52;
+    margin-bottom:10px;
+}
+.section-title p{
+    color:#666;
+    font-size:18px;
+}
+
+/* Раздел О Краснодаре */
+.about {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+}
+.about img {
+    width: 40%; /* уменьшили ширину изображения */
+    border-radius: 20px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+}
+.about-text {
+    flex: 1;
+    font-size: 19px;
+    line-height: 1.8;
+}
+.about-container {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    line-height: 1.9;
+    font-size: 18px;
+}
+body.dark .about-container {
+    background: #29293b;
+    color: #eee;
+}
+
+/* Раздел История */
+.history-container {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    line-height: 1.9;
+    font-size: 18px;
+}
+body.dark .history-container {
+    background: #29293b;
+    color: #eee;
+}
+
+/* Раздел Символика */
+.symbolism {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    line-height: 1.9;
+    font-size: 18px;
+}
+body.dark .symbolism {
+    background: #29293b;
+    color: #eee;
+}
+
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:30px;
+}
+.card{
+    background:white;
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:0 5px 20px rgba(0,0,0,0.1);
+    transition:0.3s;
+}
+.card-address {
+    font-size: 16px;
+    color: #666; 
+    margin-top: 10px;
+}
+body.dark .card-address {
+    color: #aaa; 
+}
+.card:hover{
+    transform:translateY(-10px);
+}
+.card img{
+    width:100%;
+    height:250px;
+    object-fit:cover;
+}
+.card-content{
+    padding:25px;
+}
+.card-content h3{
+    color:#e14a52;
+    margin-bottom:15px;
+    font-size:28px;
+}
+.card-content p{
+    line-height:1.7;
+}
+
+/* Галерея */
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:20px;
+}
+.gallery img{
+    width:100%;
+    height:260px;
+    object-fit:cover;
+    border-radius:15px;
+    transition:0.3s;
+}
+.gallery img:hover{
+    transform:scale(1.04);
+}
+
+/* Интересные факты */
+.facts{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:25px;
+}
+.fact{
+    background:#bbbbaa;
+    color:white;
+    padding:40px;
+    border-radius:20px;
+    text-align:center;
+}
+.fact h3{
+    font-size:45px;
+    margin-bottom:15px;
+}
+
+/* Раздел Администрирование */
+.administration-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.item {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    background-color: white;
+}
+body.dark .item {
+    background-color: #29293b;
+    color: #eee;
+}
+.item img {
+    width: 30%;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+.item .text {
+    flex: 1;
+}
+
+.map-container {
+    max-width: 800px;
+    width: 100%;
+    height: 450px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 40px; 
+    margin-bottom: 40px; 
+}
+
+footer{      
+    background:#3d3a3a;
+    color:white;
+    text-align:center;
+    padding:50px 20px;
+    margin-top: 60px;
+}
+footer h2{
+    margin-bottom:20px;
+}
+@media(max-width:900px){
+    .about{
+        flex-direction: column;
+    }
+    header h1{
+        font-size:50px;
+    }
+    header p{
+        font-size:22px;
+    }
+}
+</style>
+</head>
+<body>
+<header id="home">
+    <div>
+        <h1>Краснодар</h1>
+        <p>
+            Один из самых красивых и современных городов юга России
+        </p>
+    </div>
+</header>
+<nav>
+  <ul>
+    <li><a href="#about">О городе</a></li>
+    <li><a href="#history">История</a></li>
+    <li><a href="#symbolism">Символика</a></li>
+    <li><a href="#administration">Администрация</a></li>
+    <li><a href="#places">Достопримечательности</a></li>
+    <li><a href="#gallery">Галерея</a></li>
+    <li><a href="#facts">Факты</a></li>
+  </ul>
+  <button id="theme-toggle" title="Сменить тему" style="
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    font-size: 18px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: color 0.3s, background 0.3s;
+    color: #fff; 
+  ">🌙 </button>
+</nav>
+
+<section id="about">
+<div class="section-title">
+    <h2>О Краснодаре</h2>
+    <p>Южная столица России</p>
+</div>
+<div class="about-container">
+  <div class="about">
+    <img src="https://28kartin.ru/wp-content/uploads/2025/10/1.826.7.jpg">
+    <div class="about-text">
+        <p>
+          Краснодар — это город, где южное солнце встречается с особым, кубанским колоритом. 
+Здесь, на берегах реки Кубань, раскинулся один из самых динамично развивающихся и гостеприимных 
+городов России. Его улицы утопают в зелени платанов и каштанов, а воздух наполнен ароматами 
+цветущих акаций и свежестью речной прохлады.
+        </p>
+        <br>
+        <p>
+         В Краснодаре гармонично переплетаются современность и история. 
+Современные бизнес-центры и уютные кафе соседствуют с величественными зданиями прошлого, 
+хранящими память о купеческой эпохе. Город живёт в особом ритме: днём здесь кипит деловая 
+жизнь, а вечером улицы наполняются музыкой, смехом и ароматом свежесваренного кофе.
+        </p>
+        <br>
+        <p>
+         Особая гордость Краснодара — его люди: открытые, радушные и гордые 
+своей малой родиной. Именно они создают неповторимую атмосферу уюта и тепла, ради 
+которой хочется возвращаться сюда снова и снова.
+        </p>
+    <br>
+        <p>
+      Краснодар — это не просто точка на карте, а настоящий южный магнит, 
+притягивающий своей энергией, красотой и искренним гостеприимством.
+        </p>
+    </div>
+</div>
+</section>
+
+<section id="history">
+<div class="section-title">
+    <h2>История города</h2>
+    <p>От Екатеринодара до современного мегаполиса</p>
+</div>
+<div class="history-container">
+    <p>
+       Воронка времени привела к появлению современного 
+Краснодара в далёком конце XVIII века. Всё началось в 1793 году, 
+когда на этом живописном юге России стояла небольшая казачья 
+станица — основа будущего города. Именно казачье прошлое 
+стало фундаментом для развития этого региона, насыщенного 
+богатой историей и культурой.
+    </p>
+    <br>
+    <p>
+       Расположенный у берегов реки Кубань, 
+Краснодар быстро превратился в важный торговый и культурный центр. 
+Благодаря своему выгодному географическому положению, город стал 
+связующим звеном между Кавказом и внутренней частью страны. 
+Во времена становления здесь кипела жизнь — казачьи традиции, 
+ремесла и торжества создавали особую атмосферу свободы 
+и гостеприимства.
+    </p>
+    <br>
+    <p>
+     Более чем два столетия Краснодар 
+превратился из скромной казачьей станицы в динамичный мегаполис, 
+где современные улицы соседствуют с историческими памятниками. 
+Он сохранил в себе дух казачества и традиций, при этом уверенно 
+шагает в будущее, оставаясь сердцем южной России.
+    </p>
+</div>
+</section>
+
+<section id="symbolism">
+<div class="section-title">
+    <h2>Символика</h2>
+    <p>Герб, флаг и гимн города</p>
+</div>
+<div class="symbolism">
+    <!-- Герб -->
+    <div class="symbol-section">
+        <h3>Герб</h3>
+        <img src="path_to_heraldry.png" alt="Герб Краснодара" style="max-width: 100%; height: auto;">
+        <p>
+            Здесь размещаете описание герба города. Можно упомянуть историю происхождения, элементы герба и их значения.
+        </p>
+    </div>
+    
+    <!-- Флаг -->
+    <div class="symbol-section">
+        <h3>Флаг</h3>
+        <img src="path_to_flag.png" alt="Флаг Краснодара" style="max-width: 100%; height: auto;">
+        <p>
+            Разместите описание флага города. Укажите цветовую гамму, символы и их значение.
+        </p>
+    </div>
+    
+    <!-- Гимн -->
+    <div class="symbol-section">
+        <h3>Гимн</h3>
+        <p>
+            Опишите текст гимна города, его историю создания и значимость для жителей.
+        </p>
+    </div>
+</div>
+</section>
+
+<section id="administration">
+<div class="section-title">
+    <h2>Администрация</h2> 
+<div class="administration-container">
+    <!-- Первое лицо -->
+    <div class="item">
+        <div class="administration-image">
+            <img src="https://avatars.mds.yandex.net/i?id=ba35879889289453fdeabe960c9a76bf_l-9456276-images-thumbs&n=13">
+        </div>
+        <div class="administration-info">
+            <h4>Мэр Краснодара — Евгений Михайлович Наумов.</h4>
+            <p>В 2022 году он был избран мэром Краснодара и с тех пор 
+активно руководит развитием города. До этого он занимал 
+руководящие должности в городской администрации и сфере земельных 
+ресурсов. На посту мэра Наумов сосредоточен на модернизации инфраструктуры, 
+улучшении транспорта и благоустройстве. Он реализует масштабные проекты 
+по созданию комфортной городской среды и развитию социальных объектов. 
+Его усилия помогают сделать Краснодар ещё более современным, 
+безопасным и привлекательным для жизни, бизнеса и туризма.
+Благодаря его руководству город продолжает активно расти 
+и развиваться, укрепляя свои позиции как один 
+из ведущих центров юга России.</p>
+        </div>
+    </div>
+    <!-- Второе лицо -->
+    <div class="item">
+        <div class="administration-image">
+            <img src="https://www.sports.ru/dynamic_images/news/111/675/674/1/share/6d3d91_no_logo_no_text.jpg">
+        </div>
+        <div class="administration-info">
+            <h4>Губернатор Краснодарского края — Вениамин Иванович Кондратьев.</h4>
+            <p> Он — опытный политик и управленец, в 2015 году 
+был назначен на пост губернатора Краснодарского края.
+В качестве руководителя региона Кондратьев занимается развитием
+экономики края, привлечением инвестиций, модернизацией социальной сферы, 
+транспорта и инфраструктуры. Он активно поддерживает развитие 
+агропромышленного комплекса и туризма. Под его руководством 
+Краснодарский край сохраняет свои природные богатства 
+и становится всё более привлекательным для инвесторов 
+и туристов. Вениамин Кондратьев известен своей 
+приверженностью к развитию региона
+и заботе о его жителях.</p>
+        </div>
+    </div>
+</div>
+</section>
+
+<section id="places">
+<div class="section-title">
+    <h2>Достопримечательности</h2>
+    <p>Самые известные места Краснодара</p>
+</div>
+<div class="cards">
+<div class="card">
+    <img src="https://images.unsplash.com/photo-1494526585095-c41746248156?q=80&w=1200&auto=format&fit=crop">
+    <div class="card-content">
+        <h3>Парк Галицкого</h3>
+        <p>
+            Один из самых красивых парков России.
+            Современный ландшафтный дизайн,
+            фонтаны, аллеи,
+            арт-объекты и огромная территория
+            делают парк настоящей гордостью Краснодара.
+         <p class="card-address">📍 Адрес: ул. Примерная, 1</p>
+    </div>
+</div>
+
+<div class="card">
+    <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1200&auto=format&fit=crop">
+    <div class="card-content">
+        <h3>Улица Красная</h3>
+        <p>
+            Центральная улица города,
+            где находятся кафе,
+            магазины,
+            памятники,
+            театры и красивые исторические здания.
+        <p class="card-address">📍 Адрес: ул. Примерная, 1</p>
+    </div>
+</div>
+
+<div class="card">
+    <img src="https://images.unsplash.com/photo-1519834785169-25c765c2d5b4?q=80&w=1200&auto=format&fit=crop">
+    <div class="card-content">
+        <h3>Стадион ФК Краснодар</h3>
+        <p>
+            Современный футбольный стадион,
+            известный своей необычной архитектурой
+            и огромным медиаэкраном.
+         <p class="card-address">📍 Адрес: ул. Примерная, 1</p>
+    </div>
+</div>
+
+</div>
+</section>
+
+<section id="gallery">
+<div class="section-title">
+    <h2>Галерея</h2>
+    <p>Красивые виды города</p>
+</div>
+<div class="gallery">
+<img src="https://avatars.mds.yandex.net/i?id=a3c5080eb38295836d5095c565af_l-4599039-images-thumbs&n=13">
+<img src="https://irecommend.ru/sites/default/files/imagecache/copyright1/user-images/2380837/5sfG4w5d3YlrOv2eGVbYyg.jpg">
+<img src="https://i.pinimg.com/originals/a5/3b/42/a53b4216eb30ca8b25c3aa94808fb69b.jpg">
+<img src="https://avatars.mds.yandex.net/i?id=295210daf8fe7d6af8e3e20b860b126d_l-4599934-images-thumbs&n=13">
+<img src="https://i.pinimg.com/736x/11/27/8a/11278a563735351527ce47b9984d7151.jpg">
+<img src="https://i.pinimg.com/originals/24/a5/ad/24a5adf5417b2b791c990b5877d91a8b.jpg">
+<img src="https://storage.yandexcloud.net/storage.yasno.media/nat-geo/images/2019/5/16/2f5cbdf051034f6084f68dd3b3.max-1200x800.jpg">
+<img src="https://avatars.mds.yandex.net/i?id=708dc1ab6257f93e93f9db1842bbd98c_l-5326992-images-thumbs&ref=rim&n=13&w=1920&h=1080">
+<img src="https://i.pinimg.com/736x/2a/ca/70/2aca70c2d5b43c2e873d2cff1d062472.jpg">
+<img src="https://avatars.mds.yandex.net/i?id=72f58b6835bc168771c458cbb43b0dd2_l-4936408-images-thumbs&n=13">
+</div>
+</section>
+
+<section id="facts">
+<div class="section-title">
+    <h2>Интересные факты</h2>
+    <p>Что делает Краснодар особенным</p>
+</div>
+<div class="facts">
+<div class="fact">
+    <h3>1793</h3>
+        <p>Год основания города</p>
+</div>
+<div class="fact">
+    <h3>1M+</h3>
+    <p>Население более миллиона человек</p>
+</div>
+<div class="fact">
+    <h3>300+</h3>
+    <p>Солнечных дней в году</p>
+</div>
+<div class="fact">
+    <h3>ЮГ</h3>
+    <p>Крупнейший центр юга России</p>
+</div>
+</div>
+</section>
+<div class="map-container">
+    <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3Abbf85fcb0e9aa53bc3e87a266bca98b52aa7718d5ae15614ab3492b0e83c023d&amp;source=constructor" width="100%" height="450" style="border:0;"></iframe>
+</div>
+<footer>
+<h2>Краснодар</h2>
+<p>
+    Город солнца, парков и современной архитектуры
+</p>
+<br>
+<p>
+    © 2026 Сайт о Краснодаре
+</p>
+</footer>
+<script>
+const btn = document.getElementById('theme-toggle');
+btn.addEventListener('click', function() {
+    document.body.classList.toggle('dark');
+    btn.textContent = document.body.classList.contains('dark') ? '☀️ ' : '🌙 ';
+});
+</script>
+</body>
+</html>
